@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { v4: uuid } = require("uuid");
 const expensesFilePath = "./data/expensesData.json";
 
 const getExpenses = () => {
@@ -14,7 +15,11 @@ exports.index = (req, res) => {
 exports.addExpenseItem = (req, res) => {
   let expenses = getExpenses();
 
-  let newExpense = req.body;
+  let newExpense = {
+    id: uuid(),
+    item: req.body.item,
+    amount: req.body.amount,
+  };
 
   expenses.push(newExpense);
 
