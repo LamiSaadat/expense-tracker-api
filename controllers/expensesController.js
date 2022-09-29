@@ -10,3 +10,13 @@ exports.index = (req, res) => {
 
   res.send(expenses);
 };
+
+exports.addExpenseItem = (req, res) => {
+  let expenses = getExpenses();
+
+  let newExpense = req.body;
+
+  expenses.push(newExpense);
+
+  res.send(fs.writeFileSync(expensesFilePath, JSON.stringify(expenses)));
+};

@@ -7,6 +7,7 @@ const app = express();
 const expensesRoutes = require("./routes/expensesRoutes");
 
 app.use(cors());
+app.use(express.json());
 
 //ROUTES
 app.use("/", expensesRoutes);
