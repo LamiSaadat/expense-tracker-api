@@ -7,4 +7,6 @@ router
   .get(expensesController.index)
   .post(expensesController.addExpenseItem);
 
+router.route("/:id").delete(expensesController.deleteExpenseItem);
+
 module.exports = router;
