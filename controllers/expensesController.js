@@ -26,6 +26,26 @@ exports.addExpenseItem = (req, res) => {
   res.send(fs.writeFileSync(expensesFilePath, JSON.stringify(expenses)));
 };
 
+exports.editExpenseItem = (req, res) => {
+  let expenses = getExpenses();
+
+  let editedExpenseItem = {
+    id: req.params.id,
+    item: req.body.item,
+    amount: req.body.amount,
+  };
+
+  let editedList = expenses.map((item) => {
+    if (item.id === editedExpenseItem.id) {
+      return (item = editedExpenseItem);
+    } else {
+      return item;
+    }
+  });
+
+  res.send(fs.writeFileSync(expensesFilePath, JSON.stringify(editedList)));
+};
+
 exports.deleteExpenseItem = (req, res) => {
   let expenses = getExpenses();
 
