@@ -14,5 +14,7 @@ exports.index = (_req, res) => {
 exports.addIncome = (req, res) => {
   let newIncomeAmount = req.body;
 
-  res.send(fs.writeFileSync(incomeFilePath, JSON.stringify(newIncomeAmount)));
+  fs.writeFileSync(incomeFilePath, JSON.stringify(newIncomeAmount));
+
+  res.send(newIncomeAmount);
 };
