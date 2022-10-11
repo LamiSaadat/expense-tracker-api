@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 //ROUTES
-app.use("/", expensesRoutes);
+app.use("/expenses", expensesRoutes);
 app.use("/income", incomeRoutes);
 
 app.listen(PORT, () => {
