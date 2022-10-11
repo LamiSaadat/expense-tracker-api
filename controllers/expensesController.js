@@ -23,7 +23,9 @@ exports.addExpenseItem = (req, res) => {
 
   expenses.push(newExpense);
 
-  res.send(fs.writeFileSync(expensesFilePath, JSON.stringify(expenses)));
+  fs.writeFileSync(expensesFilePath, JSON.stringify(expenses));
+
+  res.send(expenses);
 };
 
 exports.editExpenseItem = (req, res) => {
@@ -43,7 +45,9 @@ exports.editExpenseItem = (req, res) => {
     }
   });
 
-  res.send(fs.writeFileSync(expensesFilePath, JSON.stringify(editedList)));
+  fs.writeFileSync(expensesFilePath, JSON.stringify(editedList));
+
+  res.send(editedList);
 };
 
 exports.deleteExpenseItem = (req, res) => {
@@ -63,7 +67,7 @@ exports.deleteExpenseItem = (req, res) => {
   //remove expense item from the list
   const filteredExpenses = expenses.filter((item) => item.id !== expenseItemId);
 
-  res.send(
-    fs.writeFileSync(expensesFilePath, JSON.stringify(filteredExpenses))
-  );
+  fs.writeFileSync(expensesFilePath, JSON.stringify(filteredExpenses));
+
+  res.send(filteredExpenses);
 };
